@@ -11,18 +11,15 @@
 |
 */
 
-Route::get('/', 'PagesController@getIndex')->name('Pages.index');
-
 Route::get('about', 'PagesController@getAbout')->name('Pages.about');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
+Route::resource('pet', 'PetController');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', function(){
+	return redirect()->route('pet.index');
+});
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

@@ -1,1 +1,1 @@
-@extends('Layouts.app')
+@extends('Layouts.main')

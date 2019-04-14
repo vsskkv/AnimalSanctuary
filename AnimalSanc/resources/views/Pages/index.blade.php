@@ -1,4 +1,4 @@
-@extends('Layouts.app')
+@extends('Layouts.main')
 
 @section('title', 'Homepage') 
 
