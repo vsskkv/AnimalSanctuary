@@ -5,7 +5,7 @@ What does this project need from me?
 
 Public users:
 
-- [ ] Regsiter new users
+- [x] Regsiter new users
 
 - [ ] Home page
 
