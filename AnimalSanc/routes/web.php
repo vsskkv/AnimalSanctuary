@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('users','UserController');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -22,4 +24,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', 'HomeController@admin');
 
 //Route::get('admin/routes', 'HomeController@admin')->middleware('admin');
+
+
 

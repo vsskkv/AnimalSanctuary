@@ -13,6 +13,9 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
+    <link href="{{ asset('css/Table.css') }}" rel="stylesheet" type="text/css">
+
+
     <!--Bootstrap-->
     @include('Partials._stylesheet')
 
@@ -71,9 +74,13 @@
                                     <!-- If theuser is admin do Part 1 ELSE Part 2 -->
                                     <?php if(auth()->user()->isAdmin == 1){?>
                                     <div class=”panel-body”>
-                                        <a href="{{ url('admin') }}">Admin Panel</a>
-                                    </div> <?php } else echo '<div class=”panel-heading”>Welcome</div>';?>
+                                        <a class="dropdown-item" href="{{ route('users.index') }}"><i class="fas fa-user-cog"></i> Admin Panel</a>
+                                    </div> <?php } else echo '<div class="dropdown-item">Welcome</div>';?>
+
+
+                                    <!-- Line seperator -->
                                     
+
                                     <!-- Logout -->
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
