@@ -56,10 +56,18 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    
+                                    <!-- If theuser is admin do Part 1 ELSE Part 2 -->
+                                    <?php if(auth()->user()->isAdmin == 1){?>
+                                    <div class=”panel-body”>
+                                        <a href='admin'>Admin Panel</a>
+                                    </div> <?php } else echo '<div class=”panel-heading”>Welcome</div>';?>
+                                    
+                                    <!-- Logout -->
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        <i class="fas fa-sign-out-alt"></i> Logout 
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
