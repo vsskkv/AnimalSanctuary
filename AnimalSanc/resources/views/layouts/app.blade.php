@@ -77,6 +77,7 @@
                                     <?php if(auth()->user()->isAdmin == 1){?>
                                     <div class=”panel-body”>
                                         <a class="dropdown-item" href="{{ route('users.index') }}"><i class="fas fa-user-cog"></i> Admin Panel</a>
+                                        <a class="dropdown-item" href="{{ route('pets.index') }}">Pets Panel</a>
                                     </div> <?php } else echo '<div class="dropdown-item">Welcome</div>';?>
 
 
