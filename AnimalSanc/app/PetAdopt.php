@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class PetAdopt extends Model
 {
     //
-    protected $fillable = ['pet', 'user', 'acc'];
+    protected $fillable = ['pet', 'user', 'adopted'];
 }

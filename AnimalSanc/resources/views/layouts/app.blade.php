@@ -39,41 +39,40 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Pricing</a>
       </li>
-                          @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li> 
-                        @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
-                        @endif
-                    @else      
-                        <!-- If theuser is admin do Part 1 ELSE Part 2 -->
-                        <?php if(auth()->user()->isAdmin == 1){?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('users.index') }}"><i class="fas fa-user-cog"></i> Admin Panel</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{ ="nav-link" { route('pets.index') }}">Pets Panel</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('pets.create') }}">Pets Create Panel</a>
-                        </li>
-                            
-                        <?php } ?>
+            @guest
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                </li> 
+                @if (Route::has('register'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    </li>
+                @endif
+            @else      
+                <!-- If theuser is admin do Part 1 ELSE Part 2 -->
+                <?php if(auth()->user()->isAdmin == 1){?>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('users.index') }}"><i class="fas fa-user-cog"></i> Admin Panel</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('pets.index') }}">Pets Panel</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('pets.create') }}">Pets Create Panel</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('pet_adopts.index') }}">Pets Adopt Panel</a>
+                </li>
+                <?php } ?>
 
-                        <!-- Logout -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                <i class="fas fa-sign-out-alt"></i> Logout 
-                            </a>
-                        </li>
-                    @endguest
+                <!-- Logout -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="fas fa-sign-out-alt"></i> Logout 
+                    </a>
+                </li>
+            @endguest
     </ul>
-    <span class="navbar-text white-text">
-      Hi {{ Auth::user()->first_name }} 
-    </span>
   </div>
 </nav>
     <section class="home">

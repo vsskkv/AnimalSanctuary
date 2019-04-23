@@ -15,6 +15,9 @@ class PetAdoptController extends Controller
     public function index()
     {
         //
+        $pet_adopts = PetAdopt::all();
+
+        return view('Pets.PetsAdopt.index', compact('pet_adopts'));
     }
 
     /**
@@ -38,10 +41,10 @@ class PetAdoptController extends Controller
         //
         $validatedData = $request->validate([
          'pet' => 'required|max:255',
-         'user' => 'required|alpha_num',
+         'user' => 'required|max:255',
          'adopted' => 'required|numeric',
      ]);
-     $petadopt = PetAdopt::create($validatedData);
+     $pet_adopt = PetAdopt::create($validatedData);
 
      return redirect('/pet_adopts')->with('success', 'Pet and user are successfully saved');
     }
@@ -66,6 +69,9 @@ class PetAdoptController extends Controller
     public function edit($id)
     {
         //
+        $pet_adopt = PetAdoptController::findOrFail($id);
+
+        return view('Pets.PetsAdopt.edit', compact('pet_adopt'));
     }
 
     /**
@@ -78,6 +84,14 @@ class PetAdoptController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $validatedData = $request->validate([
+         'pet' => 'required|max:255',
+         'user' => 'required|max:255',
+         'adopted' => 'required|numeric',
+        ]);
+        PetAdopt::whereId($id)->update($validatedData);
+
+        return redirect('/pet_adopts')->with('success', 'pet and user is successfully updated');
     }
 
     /**
@@ -89,5 +103,9 @@ class PetAdoptController extends Controller
     public function destroy($id)
     {
         //
+        $pet_adopt = PetAdopt::findOrFail($id);
+        $pet_adopt->delete();
+
+        return redirect('/pet_adopts')->with('success', 'pet and user is successfully deleted');
     }
 }
