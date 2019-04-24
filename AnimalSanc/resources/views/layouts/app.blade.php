@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <link href="{{ asset('css/Table.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('css/_Nav.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/Pets.css') }}" rel="stylesheet" type="text/css">
 
 
 
