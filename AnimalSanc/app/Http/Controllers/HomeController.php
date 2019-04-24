@@ -26,9 +26,20 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function pets(){
+        return view('ProductPage.PetsPage');
+    }
     public function admin()
     {
         return view('Admin/admin');
     }
+
+    public function logout () {
+    //logout user
+    auth()->logout();
+    // redirect to homepage
+    return redirect('/');
+}
 
 }

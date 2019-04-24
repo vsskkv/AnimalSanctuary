@@ -18,14 +18,17 @@ Route::get('/', function () {
 Route::resource('users','UserController');
 
 Auth::routes();
-
+Route::get('/logout', 'HomeController@logout');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/Pets', 'HomeController@pets');
 
 Route::get('/admin', 'HomeController@admin');
 
 Route::resource('pets', 'PetController');
 
 Route::resource('pet_adopts', 'PetAdoptController');
+
+
 
 //Route::get('admin/routes', 'HomeController@admin')->middleware('admin');
 

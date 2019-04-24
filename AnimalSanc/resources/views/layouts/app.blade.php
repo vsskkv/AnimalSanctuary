@@ -33,11 +33,9 @@
         <a class="nav-link" href="#"><i class="fas fa-paw">AnimalSanc</i>
         </a>
       </li>
+
       <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+        <a class="nav-link" href="{{ route('pets.index') }}">Pets</a>
       </li>
             @guest
                 <li class="nav-item">
@@ -50,7 +48,14 @@
                 @endif
             @else      
                 <!-- If theuser is admin do Part 1 ELSE Part 2 -->
-                <?php if(auth()->user()->isAdmin == 1){?>
+                @if (auth()->user()->isAdmin == 0)
+                <li class="nav-item">
+                    <a class="nav-link" href="#">{{ Auth::user()->first_name }}</a>
+                </li>
+                @else
+                <li class="nav-item">
+                    <a class="nav-link" href="#">{{ Auth::user()->first_name }}</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('users.index') }}"><i class="fas fa-user-cog"></i> Admin Panel</a>
                 </li>
@@ -63,14 +68,15 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('pet_adopts.index') }}">Pets Adopt Panel</a>
                 </li>
-                <?php } ?>
+                @endif
 
                 <!-- Logout -->
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <a class="nav-link" href="{{ url('/logout') }}">
                         <i class="fas fa-sign-out-alt"></i> Logout 
                     </a>
                 </li>
+
             @endguest
     </ul>
   </div>
