@@ -17,7 +17,7 @@ class PetAdoptController extends Controller
         //
         $pet_adopts = PetAdopt::all();
 
-        return view('Pets.PetsAdopt.index', compact('pet_adopts'));
+        return view('Pets.PetsAdopt.indexAdopt', compact('pet_adopts'));
     }
 
     /**
