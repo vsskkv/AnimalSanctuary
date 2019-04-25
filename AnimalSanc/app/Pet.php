@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Pet extends Model
 {
         protected $fillable = [
-        'name', 'type', 'description', 'adopter',
+        'name', 'type', 'description', 'adopter', 'image', 'thumbnail'
     ];
 }

@@ -31,16 +31,24 @@
               <label for="quantity">description:</label>
               <input type="text" class="form-control" name="description"/>
           </div>
-          <div class="input-group control-group increment" >
-            <input type="file" name="filename[]" class="form-control">
-            <div class="input-group-btn"> 
-              <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
-            </div>
-          </div>
+          <form method="post" action="{{url('form')}}" enctype="multipart/form-data">
+            {{csrf_field()}}
+
+                  <div class="input-group control-group increment" >
+                    <input type="file" name="filename[]" class="form-control">
+                    <div class="input-group-btn"> 
+                      <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
+                    </div>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary" style="margin-top:10px">Submit</button>
+
+            </form> 
         <button type="submit" class="btn btn-primary">Create Pet</button>
       </form>
   </div>
 </div>
+
 <script type="text/javascript">
 
     $(document).ready(function() {

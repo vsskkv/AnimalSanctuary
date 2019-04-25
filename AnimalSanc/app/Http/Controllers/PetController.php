@@ -48,7 +48,8 @@ class PetController extends Controller
             'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
      ]);
 
-        if($request->hasfile('filename'))
+        $pet = Pet::create($validatedData);
+         if($request->hasfile('filename'))
          {
 
             foreach($request->file('filename') as $image)
@@ -65,8 +66,6 @@ class PetController extends Controller
         
         $form->save();
 
-        return back()->with('success', 'Your images has been successfully');
-        $pet = Pet::create($validatedData);
 
         return redirect('/pets')->with('success', 'Pet is successfully saved');
     }
