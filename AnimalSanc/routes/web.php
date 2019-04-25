@@ -28,8 +28,6 @@ Route::resource('pets', 'PetController');
 
 Route::resource('pet_adopts', 'PetAdoptController');
 
-
-
 //Route::get('admin/routes', 'HomeController@admin')->middleware('admin');
 
 

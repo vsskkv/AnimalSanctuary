@@ -26,9 +26,9 @@
         @foreach($pet_adopts as $petadopt)
         <tr>
             <td>{{$petadopt->id}}</td>
-            <td>{{$petadopt->book_name}}</td>
-            <td>{{$petadopt->isbn_no}}</td>
-            <td>{{$petadopt->book_price}}</td>
+            <td>{{$petadopt->pet}}</td>
+            <td>{{$petadopt->user}}</td>
+            <td>{{$petadopt->accpeted}}</td>
             <td><a href="{{ route('pet_adopts.edit',$petadopt->id)}}" class="btn btn-primary">Edit</a></td>
             <td>
                 <form action="{{ route('pet_adopts.destroy', $petadopt->id)}}" method="post">

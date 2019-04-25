@@ -5,7 +5,7 @@
 @section('content')
 <div class="card uper">
   <div class="card-header">
-    Add Book
+    Add Pet
   </div>
   <div class="card-body">
     @if ($errors->any())
@@ -31,8 +31,30 @@
               <label for="quantity">description:</label>
               <input type="text" class="form-control" name="description"/>
           </div>
-          <button type="submit" class="btn btn-primary">Create Pet</button>
+          <div class="input-group control-group increment" >
+            <input type="file" name="filename[]" class="form-control">
+            <div class="input-group-btn"> 
+              <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
+            </div>
+          </div>
+        <button type="submit" class="btn btn-primary">Create Pet</button>
       </form>
   </div>
 </div>
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+      $(".btn-success").click(function(){ 
+          var html = $(".clone").html();
+          $(".increment").after(html);
+      });
+
+      $("body").on("click",".btn-danger",function(){ 
+          $(this).parents(".control-group").remove();
+      });
+
+    });
+
+</script>
 @endsection
