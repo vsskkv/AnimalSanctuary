@@ -33,9 +33,6 @@
         </a>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('pets.index') }}">Pets</a>
-      </li>
             @guest
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -59,16 +56,12 @@
                     <a class="nav-link" href="{{ route('users.index') }}"><i class="fas fa-user-cog"></i> Admin Panel</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('pets.index') }}">Pets Panel</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('pets.create') }}">Pets Create Panel</a>
+                    <a class="nav-link" href="{{ url('/allPets') }}">Pets Panel</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('pet_adopts.index') }}">Pets Adopt Panel</a>
                 </li>
                 @endif
-
                 <!-- Logout -->
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/logout') }}">
@@ -80,16 +73,7 @@
     </ul>
   </div>
 </nav>
-    <section class="home">
 
-    </section>
-
-    <div style="height: 1000px">
-        @yield('content')
-    </div>
-</div>
-</div>
-</div>
 
     @include('Partials._scripts')
 

@@ -15,8 +15,7 @@ class PetController extends Controller
     public function index()
     {
         //
-        $pets = Pet::all();
-
+        $pets = Pet::orderBy('created_at', 'desc')->paginate(8);
         return view('Pets.index', compact('pets'));
     }
 
@@ -27,8 +26,27 @@ class PetController extends Controller
      */
     public function create()
     {
-        //
-        return view('Pets.create');
+        
+        if ($request->isMethod('get')){
+            return view('Pets.create');
+        }
+        else {
+            $rules = [
+                'description' => 'required',
+            ];
+            $this->validate($request, $rules);
+            $image = new Pet();
+            if ($request->hasFile('image')) {
+                $dir = 'uploads/';
+                $extension = strtolower($request->file('image')->getClientOriginalExtension()); // get image extension
+                $fileName = str_random() . '.' . $extension; // rename image
+                $request->file('image')->move($dir, $fileName);
+                $image->image = $fileName;
+            }
+            $image->description = $request->description;
+            $image->save();
+            return redirect('/allPets');
+        }
     }
 
     /**
@@ -71,20 +89,6 @@ class PetController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        
-        $user = User::findOrFail($id);
-
-        return view('Pets.edit', compact('user'));    
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -93,15 +97,31 @@ class PetController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        $validatedData = $request->validate([
-            'name' => 'required|max:255',
-            'type' => 'required|max:255',
-            'description' => 'required|max:255',
-        ]);
-        User::whereId($id)->update($validatedData);
-
-        return redirect('/pets')->with('success', 'Pet is successfully updated');
+        if ($request->isMethod('get'))
+            return view('Pets.create', ['image' => Pet::find($id)]);
+        else {
+            $rules = [
+                'description' => 'required',
+                'type' => 'required',
+            ];
+            $this->validate($request, $rules);
+            $image = Pet::find($id);
+            if ($request->hasFile('image')) {
+                $dir = 'uploads/';
+                if ($image->image != '' && File::exists($dir . $image->image))
+                    File::delete($dir . $image->image);
+                $extension = strtolower($request->file('image')->getClientOriginalExtension());
+                $fileName = str_random() . '.' . $extension;
+                $request->file('image')->move($dir, $fileName);
+                $image->image = $fileName;
+            } elseif ($request->remove == 1 && File::exists('uploads/' . $image->image)) {
+                File::delete('uploads/' . $image->post_image);
+                $image->image = null;
+            }
+            $image->description = $request->description;
+            $image->save();
+            return redirect('/allPets');
+        }
     }
 
     /**
@@ -113,9 +133,7 @@ class PetController extends Controller
     public function destroy($id)
     {
         //
-        $pet = PetController::findOrFail($id);
-        $pet->delete();
-
-        return redirect('/pets')->with('success', 'Pet is successfully deleted');
+        Pet::destroy($id);
+        return redirect('/allPets');
     }
 }

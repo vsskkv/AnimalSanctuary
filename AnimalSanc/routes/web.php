@@ -24,7 +24,12 @@ Route::get('/Pets', 'HomeController@pets');
 
 Route::get('/admin', 'HomeController@admin');
 
-Route::resource('pets', 'PetController');
+Route::group(['prefix' => 'allPets'], function () {
+    Route::get('/', 'PetController@index');
+    Route::match(['get', 'post'], 'create', 'PetController@create');
+    Route::match(['get', 'put'], 'update/{id}', 'PetController@update');
+    Route::delete('delete/{id}', 'PetController@destroy');
+});
 
 Route::resource('pet_adopts', 'PetAdoptController');
 //Route::get('admin/routes', 'HomeController@admin')->middleware('admin');

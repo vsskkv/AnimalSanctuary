@@ -10,91 +10,53 @@
     </div><br />
   @endif
   @if (auth()->user()->isAdmin == 1)
-  <table class="table table-striped">
-    <thead>
-        <tr>
-          <td>ID</td>
-          <td>name</td>
-          <td>type</td>
-          <td>description</td>
-          <td colspan="2">Action</td>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($pets as $pet)
-        <tr>
-            <td>{{$book->id}}</td>
-            <td>{{$book->name}}</td>
-            <td>{{$book->type}}</td>
-            <td>{{$book->description}}</td>
-            <td><a href="{{ route('pets.edit',$pet->id)}}" class="btn btn-primary">Edit</a></td>
-            <td>
-                <form action="{{ route('pets.destroy', $pet->id)}}" method="post">
-                  @csrf
-                  @method('DELETE')
-                  <button class="btn btn-danger" type="submit">Delete</button>
-                </form>
-            </td>
-        </tr>
-        @endforeach
-    </tbody>
-  </table>
-  @else
       <div class="container">
-        @if (session()->has('success_message'))
-            <div class="alert alert-success">
-                {{ session()->get('success_message') }}
-            </div>
-        @endif
-
-        @if(count($errors) > 0)
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-    </div>
-
-    <div class="products-section container">
-        <div class="sidebar">
-            <h3>By Category</h3>
-            <ul>
-                @foreach ($categories as $category)
-                    <li class="{{ setActiveCategory($category->slug) }}"><a href="{{ route('shop.index', ['category' => $category->slug]) }}">{{ $category->name }}</a></li>
-                @endforeach
-            </ul>
-        </div> <!-- end sidebar -->
-        <div>
-            <div class="products-header">
-                <h1 class="stylish-heading">{{ $categoryName }}</h1>
-                <div>
-                    <strong>Price: </strong>
-                    <a href="{{ route('shop.index', ['category'=> request()->category, 'sort' => 'low_high']) }}">Low to High</a> |
-                    <a href="{{ route('shop.index', ['category'=> request()->category, 'sort' => 'high_low']) }}">High to Low</a>
-
-                </div>
-            </div>
-
-            <div class="products text-center">
-                @forelse ($Pets as $product)
-                    <div class="product">
-                        <a href="#"><img src="#" alt="product"></a>
-                        <a href="#"><div class="product-name">{{ $product->name }}</div></a>
-                        <div class="product-price">{{ $product->type }}</div>
-                    </div>
-                @empty
-                    <div style="text-align: left">No items found</div>
-                @endforelse
-            </div> <!-- end products -->
-
-            <div class="spacer"></div>
-            {{ $products->appends(request()->input())->links() }}
+        <div class="float-right">
+            <a href="{{url('laravel-crud-image-gallery/create')}}" class="btn btn-primary">New</a>
         </div>
+        <h1 style="font-size: 2.2rem">All pets</h1>
+        <hr/>
+        <div class="row">
+            @foreach($pets as $image)
+                <div class="col-md-4 col-lg-3" style="margin-bottom: 20px">
+                    <div class="card">
+                        <img class="card-img-top"
+                             src="{{url($image->image? 'uploads/'.$image->image:'images/noimage.jpg')}}"
+                             alt="{{$image->description}}" width="100%" height="180px"/>
+                        <div class="card-body">
+                            <h6 class="card-title text-center">{{ucwords($image->description)}}</h6>
+                            <h6 class="card-title text-center">{{ucwords($image->type)}}</h6>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <form id="frm_{{$image->id}}"
+                                      action="{{url('laravel-crud-image-gallery/delete/'.$image->id)}}"
+                                      method="post" style="padding-bottom: 0px;margin-bottom: 0px">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <a href="javascript:if(confirm('Are you sure want to delete?')) $('#frm_{{$image->id}}').submit()"
+                                               class="btn btn-danger btn-sm btn-block">Delete</a>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <a href="{{url('laravel-crud-image-gallery/update/'.$image->id)}}"
+                                               class="btn btn-primary btn-sm btn-block">Edit</a>
+                                        </div>
+                                        <input type="hidden" name="_method" value="delete"/>
+                                        {{csrf_field()}}
+                                    </div>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+         <nav>
+            <ul class="pagination justify-content-end">
+                {{$pets->links('vendor.pagination.bootstrap-4')}}
+            </ul>
+        </nav>
     </div>
-  @endif
-<div>
-
+      @endif
+  </div>
 @endsection
