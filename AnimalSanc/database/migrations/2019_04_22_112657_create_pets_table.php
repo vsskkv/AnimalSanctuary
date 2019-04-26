@@ -18,7 +18,7 @@ class CreatePetsTable extends Migration
             $table->string('name');
             $table->string('type');
             $table->string('description', 150);
-            $table->string('filename');
+            $table->string('image');
             $table->string('adopted');
             $table->timestamps();
         });

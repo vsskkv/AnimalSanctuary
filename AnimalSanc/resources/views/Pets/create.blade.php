@@ -31,38 +31,36 @@
               <label for="quantity">description:</label>
               <input type="text" class="form-control" name="description"/>
           </div>
-          <form method="post" action="{{url('form')}}" enctype="multipart/form-data">
-            {{csrf_field()}}
-
-                  <div class="input-group control-group increment" >
-                    <input type="file" name="filename[]" class="form-control">
-                    <div class="input-group-btn"> 
-                      <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
-                    </div>
-                  </div>
-
-                  <button type="submit" class="btn btn-primary" style="margin-top:10px">Submit</button>
-
-            </form> 
-        <button type="submit" class="btn btn-primary">Create Pet</button>
+<div class="avatar-upload col-12">
+        <div class="avatar-edit">
+            <input type='file' id="image" name="image" onchange="readURL(this);" accept=".png, .jpg, .jpeg" />
+            <label for="imageUpload"></label>
+            <img id="blah" src="https://www.tutsmake.com/wp-content/uploads/2019/01/no-image-tut.png" class="" width="200" height="150"/>
+        </div>
+ 
+    </div>
+    <div class="avatar-upload col-6">
+    <button type="submit" class="btn btn-success">Submit</button>
+    </div>
       </form>
   </div>
 </div>
 
-<script type="text/javascript">
-
-    $(document).ready(function() {
-
-      $(".btn-success").click(function(){ 
-          var html = $(".clone").html();
-          $(".increment").after(html);
-      });
-
-      $("body").on("click",".btn-danger",function(){ 
-          $(this).parents(".control-group").remove();
-      });
-
-    });
-
-</script>
+<script>
+  function readURL(input, id) {
+    id = id || '#blah';
+    if (input.files &amp;&amp; input.files[0]) {
+        var reader = new FileReader();
+ 
+        reader.onload = function (e) {
+            $(id)
+                    .attr('src', e.target.result)
+                    .width(200)
+                    .height(150);
+        };
+ 
+        reader.readAsDataURL(input.files[0]);
+    }
+ }
+</script> 
 @endsection

@@ -40,34 +40,23 @@ class PetController extends Controller
     public function store(Request $request)
     {
         //
-        $validatedData = $request->validate([
+        request()->validate([
             'name' => 'required|max:255',
             'type' => 'required|max:255',
             'description' => 'required|max:255',
-            'filename' => 'required',
-            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
-     ]);
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
 
-        $pet = Pet::create($validatedData);
-         if($request->hasfile('filename'))
-         {
-
-            foreach($request->file('filename') as $image)
-            {
-                $name=$image->getClientOriginalName();
-                $image->move(public_path().'/images/', $name);  
-                $data[] = $name;  
-            }
-         }
-
-         $form= new Form();
-         $form->filename=json_encode($data);
-         
-        
-        $form->save();
-
-
-        return redirect('/pets')->with('success', 'Pet is successfully saved');
+        if ($files = $request->file('image')) {
+           $destinationPath = 'public/image/'; // upload path
+           $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
+           $files->move($destinationPath, $profileImage);
+           $insert['image'] = "$profileImage";
+        }
+        $check = Image::insertGetId($insert);
+ 
+        return Redirect::to("image")
+        ->withSuccess('Great! Image has been successfully uploaded.');
     }
 
     /**

@@ -17,7 +17,6 @@
     <link href="{{ asset('css/Pets.css') }}" rel="stylesheet" type="text/css">
 
 
-
     <!--Bootstrap-->
     @include('Partials._stylesheet')
 
