@@ -19,7 +19,7 @@ class CreatePetsTable extends Migration
             $table->string('type');
             $table->string('description', 150);
             $table->string('image');
-            $table->string('adopted');
+            $table->string('adopted')->default('0');
             $table->timestamps();
         });
     }

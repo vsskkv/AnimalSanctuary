@@ -24,7 +24,7 @@ class PetController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         
         if ($request->isMethod('get')){
@@ -33,6 +33,8 @@ class PetController extends Controller
         else {
             $rules = [
                 'description' => 'required',
+                'name' => 'required|max:255',
+                'type' => 'required|max:255',
             ];
             $this->validate($request, $rules);
             $image = new Pet();
@@ -44,6 +46,8 @@ class PetController extends Controller
                 $image->image = $fileName;
             }
             $image->description = $request->description;
+            $image->name = $request->name;
+            $image->type = $request->type;
             $image->save();
             return redirect('/allPets');
         }
@@ -103,6 +107,7 @@ class PetController extends Controller
             $rules = [
                 'description' => 'required',
                 'type' => 'required',
+                'name' => 'required|max:255',
             ];
             $this->validate($request, $rules);
             $image = Pet::find($id);
