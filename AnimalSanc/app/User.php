@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
+    protected $table = 'users';
 
     /**
      * The attributes that are mass assignable.
@@ -36,6 +37,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function petsMethords(){
+        return $this->belongsToMany( 'App\Models\Pet', 'pet_adopt', 'user_id', 'pet_id' );
+    }
 
     public function getFullNameAttribute(){
         return $this->attributes['first_name'].' '.$this->attributes['last_name'];

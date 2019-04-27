@@ -15,8 +15,10 @@ class CreatePetAdoptsTable extends Migration
     {
         Schema::create('pet_adopts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('pet');
-            $table->integer('user');
+            $table->integer('pet_id');
+            $table->forign('pet_id')->references('id')->on('pets');
+            $table->integer('user_id');
+            $table->forign('user_id')->references('id')->on('users');
             $table->boolean('adopted')->default(0);
         });
     }

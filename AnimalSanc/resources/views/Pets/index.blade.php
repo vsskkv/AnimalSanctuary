@@ -78,7 +78,7 @@
                                       method="post" style="padding-bottom: 0px;margin-bottom: 0px">
                                     <div class="row">
                                         <div class="col-sm-6">
-                                            <a href="javascript:if(confirm('Are you sure want to delete?')) $('#frm_{{$image->id}}').submit()"
+                                            <a href="javascript:if(confirm('Are you sure want to Adopt?')) $('#frm_{{$image->id}}').submit()"
                                                class="btn btn-danger btn-sm btn-block">Adopt</a>
                                         </div>
                                         {{csrf_field()}}

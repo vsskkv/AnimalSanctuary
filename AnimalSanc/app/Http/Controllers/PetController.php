@@ -16,7 +16,7 @@ class PetController extends Controller
     {
         //
         $pets = Pet::orderBy('created_at', 'desc')->paginate(8);
-        return view('Pets.index', compact('pets'));
+        return view('Pets.index', compact('pets', 'pet_adopt'));
     }
 
     /**
