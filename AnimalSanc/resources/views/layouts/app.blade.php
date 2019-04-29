@@ -64,7 +64,7 @@
                     <a class="nav-link" href="{{ url('/allPets') }}">Pets Panel</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('pet_adopts.index') }}">Pets Adopt Panel</a>
+                    <a class="nav-link" href="{{ url('postview') }}">Pets Adopt Panel</a>
                 </li>
                 @endif
                 <li class="nav-item">

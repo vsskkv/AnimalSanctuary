@@ -31,7 +31,12 @@ Route::group(['prefix' => 'allPets'], function () {
     Route::delete('delete/{id}', 'PetController@destroy');
 });
 
-Route::resource('pet_adopts', 'PetAdoptController');
+//Route::resource('pet_adopts', 'PetAdoptController');
+Route::get('post','PetAdoptController@create');
+Route::post('post','PetAdoptController@store');
+Route::get('postview','PetAdoptController@index');
+Route::get('edit/{id}','PetAdoptController@edit');
+Route::post('edit/{id}','PetAdoptController@update');
 //Route::get('admin/routes', 'HomeController@admin')->middleware('admin');
 
 

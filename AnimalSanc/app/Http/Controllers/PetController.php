@@ -125,7 +125,7 @@ class PetController extends Controller
             }
             $image->description = $request->description;
             $image->save();
-            return redirect('/allPets');
+            return redirect('postview');
         }
     }
 

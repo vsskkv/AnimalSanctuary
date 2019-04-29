@@ -26,8 +26,8 @@
         @foreach($pet_adopts as $petadopt)
         <tr>
             <td>{{$petadopt->id}}</td>
-            <td>{{$petadopt->pet}}</td>
-            <td>{{$petadopt->user}}</td>
+            <td>{{$petadopt->pet_id}}</td>
+            <td>{{$petadopt->user_id}}</td>
             <td>
             @if($petadopt->status == 0)
             <span class="label label-primary">Pending</span>
@@ -45,4 +45,5 @@
     </tbody>
   </table>
 <div>
+  
 @endsection

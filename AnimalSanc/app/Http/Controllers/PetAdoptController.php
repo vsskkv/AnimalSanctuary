@@ -15,7 +15,7 @@ class PetAdoptController extends Controller
     public function index()
     {
         //
-        $pet_adopts = PetAdopt::all();
+        $pet_adopts =\DB::table('pet_adopts')->get();
 
         return view('Pets.PetsAdopt.indexAdopt', compact('pet_adopts'));
     }
@@ -46,7 +46,7 @@ class PetAdoptController extends Controller
      ]);
      $pet_adopt = PetAdopt::create($validatedData);
 
-     return redirect('/pet_adopts')->with('success', 'Pet and user are successfully saved');
+     return redirect('post')->with('success', 'Pet and user are successfully saved');
     }
 
     /**
@@ -84,33 +84,27 @@ class PetAdoptController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $validatedData = $request->validate([
-         'pet' => 'required|max:255',
-         'user' => 'required|max:255',
-         'adopted' => 'required|numeric',
-        ]);
-        PetAdopt::whereId($id)->update($validatedData);
 
         switch($request->get('approve'))
         {
             case 0:
-                Post::postpone($id);
+                PetAdopt::postpone($id, null);
                 break;
             case 1:
-                Post::approve($id);
+                PetAdopt::approve($id, null);
                 break;
             case 2:
-                Post::reject($id);
+                PetAdopt::reject($id);
                 break;
             case 3:
-                Post::postpone($id);
+                PetAdopt::postpone($id);
                 break;
             default:    
                 break;
 
         }
 
-        return redirect('/pet_adopts')->with('success', 'pet and user is successfully updated');
+        return redirect('postview')->with('success', 'pet and user is successfully updated');
     }
 
     /**
