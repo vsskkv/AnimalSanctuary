@@ -67,6 +67,9 @@
                     <a class="nav-link" href="{{ route('pet_adopts.index') }}">Pets Adopt Panel</a>
                 </li>
                 @endif
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/allPets') }}">Pets </a>
+                </li>
                 <!-- Logout -->
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/logout') }}">

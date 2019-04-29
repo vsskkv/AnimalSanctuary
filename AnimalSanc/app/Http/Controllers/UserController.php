@@ -105,4 +105,39 @@ class UserController extends Controller
 
         return redirect('/users')->with('success', 'User is successfully deleted');
     }
+
+    public function getCafes(){
+    $users = User::with('petsMethords')
+        ->with(['tags' => function( $query ){
+            $query->select('tag');
+        }])
+        ->with('company')
+        ->withCount('userLike')
+        ->withCount('likes')
+        ->where('deleted', '=', 0)
+        ->get();
+    return response()->json( $users );
+  }
+
+  public function getCafe( $slug ){
+    $user = User::where('slug', '=', $slug)
+        ->with('petsMethords')
+        ->withCount('userLike')
+        ->with('tags')
+        ->with(['company' => function( $query ){
+            $query->withCount('users');
+        }])
+        ->withCount('likes')
+        ->where('deleted', '=', 0)
+        ->first();
+        /*
+            If the cafe is not null, return the cafe otherwise return
+            a 404 error.
+        */
+        if( $user != null ){
+            return response()->json( $user );
+        }else{
+            abort(404);
+        }
+  }
 }

@@ -38,8 +38,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function petsMethords(){
-        return $this->belongsToMany( 'App\Models\Pet', 'pet_adopt', 'user_id', 'pet_id' );
+    public function Pets(){
+        return $this->belongsToMany( Role::class);
     }
 
     public function getFullNameAttribute(){
