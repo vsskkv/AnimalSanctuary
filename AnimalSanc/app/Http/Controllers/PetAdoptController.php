@@ -69,9 +69,9 @@ class PetAdoptController extends Controller
     public function edit($id)
     {
         //
-        $pet_adopt = PetAdoptController::findOrFail($id);
+        $pet_adopt = \DB::table('pet_adopts')->where('id', $id)->first();
 
-        return view('Pets.PetsAdopt.edit', compact('pet_adopt'));
+        return view('Pets.PetsAdopt.editAdopt', compact('pet_adopt', 'id'));
     }
 
     /**
@@ -90,6 +90,25 @@ class PetAdoptController extends Controller
          'adopted' => 'required|numeric',
         ]);
         PetAdopt::whereId($id)->update($validatedData);
+
+        switch($request->get('approve'))
+        {
+            case 0:
+                Post::postpone($id);
+                break;
+            case 1:
+                Post::approve($id);
+                break;
+            case 2:
+                Post::reject($id);
+                break;
+            case 3:
+                Post::postpone($id);
+                break;
+            default:    
+                break;
+
+        }
 
         return redirect('/pet_adopts')->with('success', 'pet and user is successfully updated');
     }

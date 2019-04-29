@@ -81,7 +81,7 @@
                                           <button>
                                             <?php 
                                               $id = DB::table('pet_adopts')->insertGetId(
-                                                  ['pet' => $image->id, 'user' => Auth::user()->id]
+                                                  ['pet_id' => $image->id, 'user_id' => Auth::user()->id]
                                               );
                                             ?>
                                           Adopt   

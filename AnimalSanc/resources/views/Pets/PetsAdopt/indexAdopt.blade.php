@@ -28,16 +28,19 @@
             <td>{{$petadopt->id}}</td>
             <td>{{$petadopt->pet}}</td>
             <td>{{$petadopt->user}}</td>
-            <td>{{$petadopt->accpeted}}</td>
-            <td><a href="{{ route('pet_adopts.edit',$petadopt->id)}}" class="btn btn-primary">Edit</a></td>
             <td>
-                <form action="{{ route('pet_adopts.destroy', $petadopt->id)}}" method="post">
-                  @csrf
-                  @method('DELETE')
-                  <button class="btn btn-danger" type="submit">Delete</button>
-                </form>
+            @if($petadopt->status == 0)
+            <span class="label label-primary">Pending</span>
+            @elseif($petadopt->status == 1)
+            <span class="label label-success">Approved</span>
+            @elseif($petadopt->status == 2)
+            <span class="label label-danger">Rejected</span>
+            @else
+            <span class="label label-info">Postponed</span>
+            @endif
             </td>
-        </tr>
+            <td><a href="{{action('PetAdoptController@edit', $petadopt->id)}}" class="btn btn-warning">Moderate</a></td>
+            </tr>
         @endforeach
     </tbody>
   </table>

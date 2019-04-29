@@ -32,7 +32,7 @@
     <body>
     <nav class="navbar navbar-expand-lg navbar-dark indigo">
   <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav">
       <li class="nav-item active">
         <a class="nav-link" href="#"><i class="fas fa-paw">AnimalSanc</i>
         </a>

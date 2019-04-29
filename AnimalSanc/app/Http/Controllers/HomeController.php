@@ -36,10 +36,10 @@ class HomeController extends Controller
     }
 
     public function logout () {
-    //logout user
-    auth()->logout();
-    // redirect to homepage
-    return redirect('/');
-}
+        //logout user
+        auth()->logout();
+        // redirect to homepage
+        return redirect('/');
+    }
 
 }
