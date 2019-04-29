@@ -88,10 +88,10 @@ class PetAdoptController extends Controller
         switch($request->get('approve'))
         {
             case 0:
-                PetAdopt::postpone($id, null);
+                PetAdopt::postpone($id);
                 break;
             case 1:
-                PetAdopt::approve($id, null);
+                PetAdopt::approve($id);
                 break;
             case 2:
                 PetAdopt::reject($id);
