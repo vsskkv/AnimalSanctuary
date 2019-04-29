@@ -9,6 +9,13 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
+        <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
+        <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+
+        <link href="{{ asset('css/welcome.css') }}" rel="stylesheet" type="text/css">
+
         <!-- Styles -->
         <style>
             html, body {
@@ -68,32 +75,29 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
+                    
                         <a href="{{ url('/home') }}">Home</a>
+                  
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                         <a href="{{ route('login') }}">Login</a>
 
                         @if (Route::has('register'))
+                        
                             <a href="{{ route('register') }}">Register</a>
+
                         @endif
                     @endauth
                 </div>
             @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+            <div class="container">
+            <div class="centerImg"></div>
+            <div id="typewriter"></div>
+               <button class="corner-button">
+  <span>Click me</span>
+</button>
             </div>
         </div>
     </body>
+    <script src="{{ asset('js/welcome.js') }}" type="text/javascript"></script>
 </html>
