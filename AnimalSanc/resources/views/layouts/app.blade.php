@@ -31,7 +31,6 @@
 
 </head>
     <body>
-        <canvas>
     <nav class="navbar navbar-expand-lg navbar-dark indigo">
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav">
@@ -83,7 +82,7 @@
     </ul>
   </div>
 </nav>
-</canvas>
+
 
     @include('Partials._scripts')
     @yield('content')
