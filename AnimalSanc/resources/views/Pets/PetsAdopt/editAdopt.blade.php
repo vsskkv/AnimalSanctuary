@@ -19,7 +19,13 @@
                 <lable>Approval</lable>
                 <select name="approve">
                   <option value="0" @if($pet_adopt->status==0)selected @endif>Pending</option>
-                  <option value="1" @if($pet_adopt->status==1)selected @endif>Approve</option>
+                  <option value="1" @if($pet_adopt->status==1)selected
+                    <?php 
+                    DB::table('pets')
+                      ->where('id', $pet_adopt->pet_id)
+                      ->update(['adopted' => $pet_adopt->user_id]);
+                    ?>
+                   @endif>Approve</option>
                   <option value="2" @if($pet_adopt->status==2)selected @endif>Reject</option>
                   <option value="3" @if($pet_adopt->status==3)selected @endif>Postponed</option> 
                 </select>
