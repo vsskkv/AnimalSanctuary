@@ -42,6 +42,7 @@ class UserController extends Controller
             'last_name' => 'required|max:255',
             'username' => 'required|max:255',
             'isAdmin' => 'required|numeric',
+            
         ]);
         $user = User::create($validatedData);
 

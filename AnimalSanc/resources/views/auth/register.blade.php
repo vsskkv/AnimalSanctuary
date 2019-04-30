@@ -73,6 +73,19 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+
+                            <div class="col-md-6">
+                                <input id="date_of_birth" type="date_of_birth" class="form-control{{ $errors->has('date_of_birth') ? ' is-invalid' : '' }}" placeholder="date_of_birth" name="date_of_birth" required>
+
+                                @if ($errors->has('date_of_birth'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('date_of_birth') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group row justify-content-center mb-0">
                             <div class="col-md-6 text-center">
                                 <button type="submit" class="btn btn-success">
