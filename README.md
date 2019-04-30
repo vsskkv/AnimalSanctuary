@@ -63,7 +63,8 @@ Security:
 - [x] hash passwords
 - [x] restrict file upload of images
 - [ ] cross-site forgery
-Strechers
+
+Strechers:
 
 - [ ] list by type
 - [ ] allow animal to have mutiple pictures
