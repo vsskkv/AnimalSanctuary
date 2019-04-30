@@ -1,4 +1,4 @@
-var str = "ASTON Animal Sanctuary",
+var str = "Animal Sanctuary .",
     i = 0,
     isTag,
     text;
@@ -14,6 +14,6 @@ var str = "ASTON Animal Sanctuary",
     if( char === '>' ) isTag = false;
 
     if (isTag) return type();
-    setTimeout(type, 150);
+    setTimeout(type, 180);
 }());
 

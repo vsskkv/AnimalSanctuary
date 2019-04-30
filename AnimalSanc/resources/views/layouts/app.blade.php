@@ -15,6 +15,7 @@
 
     <link href="{{ asset('css/Table.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/Pets.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/waterBack.css') }}" rel="stylesheet" type="text/css">
 
     @yield('head')
 <!-- Styles -->
@@ -30,6 +31,7 @@
 
 </head>
     <body>
+        <canvas>
     <nav class="navbar navbar-expand-lg navbar-dark indigo">
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav">
@@ -81,7 +83,7 @@
     </ul>
   </div>
 </nav>
-
+</canvas>
 
     @include('Partials._scripts')
     @yield('content')
