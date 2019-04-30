@@ -13,7 +13,7 @@ Public users:
 
 - [x] view the adoption this user made (Approved)
 
-- [ ] view the adoption this user made (waiting)
+- [x] view the adoption this user made (waiting)
 
 Admin:
 
