@@ -7,61 +7,64 @@ Public users:
 
 - [x] Regsiter new users
 
-- [ ] Home page
+- [x] Home page
 
-- [ ] make adoption request
+- [x] make adoption request
 
-- [ ] view the adoption this user made
+- [x] view the adoption this user made (Approved)
+
+- [ ] view the adoption this user made (waiting)
 
 Admin:
 
-- [ ] See all pending requests
+- [x] See all pending requests
 
-- [ ] approve or deny
+- [x] approve or deny
 
-- [ ] Add new anaimals
+- [x] Add new anaimals
 
-- [ ] see all animals on the system, owned and not
+- [x] see all animals on the system, owned and not
 
-- [ ] view all adoption requests
+- [x] view all adoption requests
 
 Database:
 
  registered users:
 
-- [ ] username
+- [x] username
 
 - [ ] data of birth
 
-- [ ] password
+- [x] password
 
 Animals:
 
-- [ ] name
+- [x] name
 
 - [ ] data of birth
 
-- [ ] description
+- [x] description
 
-- [ ] picture
+- [x] picture
 
-- [ ] available
+- [x] available
 
-- [ ] mulitple users can adopt one animal
+- [x] mulitple users can adopt one animal
 
-- [ ] one user can adopt multiple animals
+- [x] one user can adopt multiple animals
 
-- [ ] one animal can only be adopted by one user
+- [x] one animal can only be adopted by one user
 
 Security:
 
-- [ ] authentication
-- [ ] form validation
+- [x] authentication
+- [x] form validation
 - [ ] handle injection
-- [ ] hash passwords
-- [ ] restrict file upload of images
+- [x] hash passwords
+- [x] restrict file upload of images
 - [ ] cross-site forgery
-Strechers
+
+Strechers:
 
 - [ ] list by type
 - [ ] allow animal to have mutiple pictures
