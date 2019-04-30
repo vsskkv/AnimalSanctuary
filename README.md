@@ -33,7 +33,7 @@ Database:
 
 - [x] username
 
-- [ ] data of birth
+- [x] data of birth
 
 - [x] password
 
@@ -41,7 +41,7 @@ Animals:
 
 - [x] name
 
-- [ ] data of birth
+- [x] data of birth
 
 - [x] description
 
