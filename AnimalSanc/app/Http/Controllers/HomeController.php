@@ -25,7 +25,8 @@ class HomeController extends Controller
     public function index()
     {
         $pets =\DB::table('pets')->get();
-        return view('home', compact( 'pets'));
+        $pet_adopts =\DB::table('pet_adopts')->get();
+        return view('home', compact( 'pets', 'pet_adopts'));
     }
 
     public function pets(){
