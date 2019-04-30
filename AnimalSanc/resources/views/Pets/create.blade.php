@@ -41,6 +41,11 @@
                     {!! Form::text("name",null,["class"=>"form-control".($errors->has('name')?" is-invalid":""),"autofocus",'placeholder'=>'Name']) !!}
                     {!! $errors->first('name','<span class="invalid-feedback">:message</span>') !!}
                 </div>
+                {!! Form::label("date_of_birth","Birthday",["class"=>"col-form-label col-md-3 col-lg-2"]) !!}
+                <div class="col-md-8">
+                    {!! Form::date("date_of_birth",null,["class"=>"form-control".($errors->has('date_of_birth')?" is-invalid":""),"autofocus",'placeholder'=>'date_of_birth']) !!}
+                    {!! $errors->first('date_of_birth','<span class="invalid-feedback">:message</span>') !!}
+                </div>
             </div>
             <div class="form-group row">
                 <div class="col-md-3 col-lg-2"></div>

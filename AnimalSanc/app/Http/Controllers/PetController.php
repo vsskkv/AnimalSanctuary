@@ -35,6 +35,7 @@ class PetController extends Controller
                 'description' => 'required',
                 'name' => 'required|max:255',
                 'type' => 'required|max:255',
+                'date_of_birth' => 'required'
             ];
             $this->validate($request, $rules);
             $image = new Pet();
@@ -48,6 +49,7 @@ class PetController extends Controller
             $image->description = $request->description;
             $image->name = $request->name;
             $image->type = $request->type;
+            $image->date_of_birth = $request->date_of_birth;
             $image->save();
             return redirect('/allPets');
         }
