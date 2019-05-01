@@ -3,8 +3,8 @@
 @extends('layouts.app')
 
 @section('css')
-   
-@endsection()
+    <link href="{{ asset('css/Table.css') }}" rel="stylesheet" type="text/css">
+@endsection
 
 @section('content')
 </style>

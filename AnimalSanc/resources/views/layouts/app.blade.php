@@ -13,11 +13,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
-    <link href="{{ asset('css/Table.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('css/Pets.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('css/waterBack.css') }}" rel="stylesheet" type="text/css">
 
-    @yield('head')
 <!-- Styles -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     @yield('css')
@@ -31,14 +27,16 @@
 
 </head>
     <body>
-    <nav class="navbar navbar-expand-lg navbar-dark indigo">
-  <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#"><i class="fas fa-paw">AnimalSanc</i>
-        </a>
-      </li>
-
+    <nav class="navbar navbar-dark bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+<div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link" href="#"><i class="fas fa-paw">AnimalSanc</i>
+            </a>
+          </li>
             @guest
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -50,14 +48,7 @@
                 @endif
             @else      
                 <!-- If theuser is admin do Part 1 ELSE Part 2 -->
-                @if (auth()->user()->isAdmin == 0)
-                <li class="nav-item">
-                    <a class="nav-link" href="#">{{ Auth::user()->first_name }}</a>
-                </li>
-                @else
-                <li class="nav-item">
-                    <a class="nav-link" href="#">{{ Auth::user()->first_name }}</a>
-                </li>
+                @if (auth()->user()->isAdmin == 1)
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('users.index') }}"><i class="fas fa-user-cog"></i> Admin Panel</a>
                 </li>
@@ -80,8 +71,13 @@
 
             @endguest
     </ul>
+    @auth
+    <span class="navbar-text">
+      Hi {{ Auth::user()->first_name }}
+    </span>
+    @endauth
   </div>
-</nav>
+    </nav>
 
 
     @include('Partials._scripts')
